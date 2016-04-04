@@ -14,6 +14,7 @@ import java.util.Random;
 import org.apache.log4j.Logger;
 
 import com.careydevelopment.twitterautomation.config.MyTwitter;
+import com.careydevelopment.twitterautomation.util.Constants;
 
 import twitter4j.Friendship;
 import twitter4j.Query;
@@ -27,10 +28,9 @@ import twitter4j.User;
 /**
  * Auto follow Twitter users based on interest
  */
-public class AutoFollow {
+public class AutoFollow implements Constants {
 	
 	private static final int NUMBER_OF_RUNS = 7;
-	private static final String DNF_FILE = "c:/resources/dnf.txt";
 	private static final int FOLLOW_SET_PAUSE_SIZE = 3600000;
 	private static final int FOLLOW_SET_PAUSE_MIN = 180000;
 	private static final int FOLLOW_PAUSE_SIZE = 30000;
@@ -62,7 +62,7 @@ public class AutoFollow {
 		//we'll cycle thru the set of keywords a number of times
 		//based on the NUMBER_OF_RUNS value
 		for (int count = 0;count<NUMBER_OF_RUNS;count++) {			
-			LOGGER.debug("On run #" + count);
+			LOGGER.info("On run #" + count);
 				
 			for (String key : keywords) {
 				processKeyword(key);
@@ -243,7 +243,7 @@ public class AutoFollow {
 	    }
 	    	    
 	    /*for (Long id : dnfIds) {
-	    	System.err.println(id);
+	    	LOGGER.debug(id);
 	    }*/
 	}
 }
